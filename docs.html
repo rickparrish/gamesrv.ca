@@ -1,0 +1,98 @@
+---
+layout: default
+permalink: /docs/
+title: Docs
+---
+<p class="intro">I kind of suck at writing documentation, but here's my attempt at describing how the latest version of GameSrv can be installed/configured/customized.</p>
+<p>Skip to <a href="#Installation">Installation</a>, <a href="#Configuration">Configuration</a>, <a href="#Customization">Customization</a></p>
+<h2 id="Installation">Installation</h2>
+<h3>Windows</h3>
+<p>On Windows, installation should be pretty straightforward for Win98 and newer (Win95 not supported, sorry):</p>
+<ul>
+	<li>Every supported platform will require the <a href="http://tinyurl.com/3pdzaso" target="_blank">.NET framework 2.0</a></li>
+	<li>On some really old platforms (Win98 for sure, possibly WinME) the .NET framework 2.0 will require <a href="http://tinyurl.com/6fkn7rv" target="_blank">Internet Explorer 6</a></li>
+	<li>On Windows Vista and Windows 7 (and presumably any newer version to come) you'll need to copy sbbsexec.dll to your \Windows\System32 directory.</li>
+	<li>Also on Windows Vista and Windows 7 (and presumably any newer version to come) you should take care when picking where to extract the GameSrv archive to. These versions of Windows have increased security, so installing GameSrv to \Program Files will probably not work, so I'd recommend \GameSrv instead. Actually I recommend \GameSrv for any version of Windows, but the older ones don't matter so much</li>
+</ul>
+<p>That should be it!</p>
+<h3>Linux</h3>
+<p>The previous Linux instructions were from 2011 and no longer work with modern distributions, so I've removed them to avoid confusion.&nbsp; I'll update this section with the next release, but if you need help installing on Linux before then, hit the Contact link above and let me know.</p>
+<h2 id="Configuration">Configuration</h2>
+<h3>Main Configuration</h3>
+<p>The main configuration for GameSrv is stored in <b>config\gamesrv.ini</b>. In the future I'll add additional documentation here, but for now just read the comments for each entry in that file.</p>
+<h3>Logon Process</h3>
+<p>The logon process (that is, the actions that occur after a user enters their username and password) is stored in <b>config\logonprocess.ini</b>. Again, documentation will probably be added here in the future, but for now just read the comments in the ini file.</p>
+<h3>Logoff Process</h3>
+<p>The logoff process (that is, the actions that occur after a user execute the LogOff menu command) is stored in <b>config\logoffprocess.ini</b>. Again, documentation will probably be added here in the future, but for now just read the comments in the ini file.</p>
+<h3>New User Registration</h3>
+<p>When a new user registers, only two questions are hardcoded into the system: Alias, which acts as their username, and password, which should be self explanatory! If you want any additional information from the user, you can add questions to the new user registration process by editing the <b>config\newuser.ini</b> file. I know I sound like a broken record, but there's no documentation here yet, instead read the ini file and look at the sample questions it contains.</p>
+<h3>Doors</h3>
+<p>Each door you want to run should have a unique ini in the doors sub-directory. There is a sample <b>doors\_sample.ini</b> you can look at to see how to setup the door. As with the rest of this section, further documentation is coming soon, so just read the sample (or look at the configuration for the other bundled doors).</p>
+<h3>Menus</h3>
+<p>Each menu on your system should have a unique ini in the menus sub-directory. The <b>menus\main.ini</b> has information describing the structure and parameters for the ini file.</p>
+<h2 id="Customization">Customization</h2>
+<h3>Prompts</h3>
+<p>Every prompt in the system (unless I missed some) can be configured by changing a file in the ansi sub-directory. At some point I'd like to list each file, and it's purpose, but for now just go and open them all and see what they say, and change them to your liking.</p>
+<h3>Bulletins</h3>
+<p>GameSrv ships with two really crappy default bulletins. You'll probably want to replace them, or remove them altogether if you don't want them. As you'll see when you look in the <b>menus\bulletins.ini</b>, they just use the DisplayFilePause action to display a file in the bulletins sub-directory, so it's easy to add/edit/delete ones if you want.</p>
+<h3>Menus</h3>
+<p>By default, all menus will display using the built-in canned menus (that were stolen from Shotgun PRO). If you want to display something more unique, you can put .ans files in the menus sub-directory, using the same name as the .ini file. So for example to customize the MAIN menu, create a <b>menus\main.ans</b> file.</p>
+<p>You can also create different menus for each access level, so for example if you have an item on the main menu that only sysops with an access level of 100 can see, then you can create a <b>menus\main.ans</b> that everyone will see, but also create a <b>menus\main100.ans</b> that only users with access level 100 will see. Similarly if you have a reduced menu that twit users should see, you could create a third <b>menus\menu0.ans</b>.</p>
+<h3>MCI Codes</h3>
+<p>The ansis/bulletins/menus all support using MCI codes, which allow you to embed certain variables into the display. The currently supported codes are:</p>
+<table border="1" cellpadding="5" cellspacing="1" class="table table-striped table-bordered table-hover">
+	<tbody>
+		<tr>
+			<td>ACCESSLEVEL</td>
+			<td>The current user's numeric access level</td>
+		</tr>
+		<tr>
+			<td>ALIAS</td>
+			<td>The current user's alias</td>
+		</tr>
+		<tr>
+			<td>BBSNAME</td>
+			<td>Your BBS name, as defined in the <b>config\gamesrv.ini</b></td>
+		</tr>
+		<tr>
+			<td>DATE</td>
+			<td>The system's current date, in short format</td>
+		</tr>
+		<tr>
+			<td>GSDIR</td>
+			<td>The directory GameSrv is running from</td>
+		</tr>
+		<tr>
+			<td>MENUNAME</td>
+			<td>The menu the user last loaded</td>
+		</tr>
+		<tr>
+			<td>NODE</td>
+			<td>The node the user signed on to</td>
+		</tr>
+		<tr>
+			<td>OPERATINGSYSTEM</td>
+			<td>The system's operating system</td>
+		</tr>
+		<tr>
+			<td>SYSOPEMAIL</td>
+			<td>Your email address, as defined in <b>config\gamesrv.ini</b></td>
+		</tr>
+		<tr>
+			<td>SYSOPNAME</td>
+			<td>Your name, as defined in <b>config\gamesrv.ini</b></td>
+		</tr>
+		<tr>
+			<td>TIME</td>
+			<td>The system's current time, in short format</td>
+		</tr>
+		<tr>
+			<td>TIMELEFT</td>
+			<td>The current user's time left for this call, in hh:mm:ss format</td>
+		</tr>
+	</tbody>
+</table>
+<p>Additionally, every new user question can be accessed using the upper-case section name found in the <b>config\newuser.ini</b> file. So for example, a [RealName] section in the newuser.ini file can be accessed as REALNAME.</p>
+<p>To use the codes, wrap them in { and } characters. So for example, {ALIAS} will display the user's alias</p>
+<p>Each code also supports justification of short values. So for example, if you want to display the user's access level and always have it take up 3 spaces on screen, use {ACCESSLEVEL3} to left-align the text and pad the right side with spaces, or {3ACCESSLEVEL} to right-align it and pad the left with spaces.</p>
+<p>When values are too long for the requested size, they'll be truncated. So for example, if you want to display the user's alias (which is 'rumpelstiltskin') and always have it take up 10 spaces on screen, use {ALIAS10} to truncate the end of the string leaving 'rumpelstil', or {10ALIAS} to truncate the beginning of the string leaving 'lstiltskin'. (Not that you'd probably ever want to truncate the alias so short, but it's just an example of how it works.)</p>

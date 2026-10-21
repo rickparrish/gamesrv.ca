@@ -1,0 +1,22 @@
+---
+layout: default
+title: New alpha release
+---
+
+<p>There's a new alpha release of GameSrv available on GitHub: <a href="https://github.com/rickparrish/GameSrv/tree/master/bin" target="_blank">GameSrv Alpha</a> (Just click one of the two .zip links, then click "View Raw" to download the file)</p>
+<p>This new version has a lot of new features that I've been meaning to get out there for awhile, as well as fixes for installing on Ubuntu 14.04, so I figured it was probably time to package something up.&nbsp; I haven't tested it too extensively yet, so that's why it's considered an alpha release.&nbsp; <strong>Definitely don't use it to upgrade any existing installations you have, at least not without backing up your existing GameSrv directory!</strong></p>
+<p>Some of the new features in this version are:</p>
+<ul>
+	<li>A whoisonline.txt is available in tab-delimited format</li>
+	<li>Compiling pty-sharp on Ubuntu 14.04 is fixed</li>
+	<li>Add rlogin-ips.txt, which gives you the ability to limit who can RLogin into your server</li>
+	<li>IPv6 support!&nbsp; Except on XP, which doesn't support dual-stack, and it's probably not worth working around that</li>
+	<li>Added Dean Warren's start/stop script for Linux</li>
+	<li>DOS BBSes can now run WIN32 doors via the W32DOOR utility (documentation pending, email me if you need assistance).&nbsp; Credit to Mike Ehlert for making this work with <a href="http://pcmicro.com/NetFoss/" target="_blank">NetFoss</a>, which made me give some thought to how something like that could work with GameSrv.</li>
+	<li>Telnet-out feature is now embedded instead of relying on TelnetDoor.exe, so it now supports Linux</li>
+	<li>Doors now use Platform=DOS|Linux|Windows instead of Native=true|false, which gives more control over what doors can be displayed at any given time (ie a Win32 door set to Native=true shouldn't be visible when running on Linux, but GameSrv had no way of knowing that)</li>
+	<li>RLogin can optionally validate the user's password</li>
+	<li>Add banned-users.txt, which lets you temporarily ban users who try to login/register with certain aliases (I use it for bots that try to login as <strong>comcast</strong>, <strong>cusadmin</strong>, etc)</li>
+	<li>Ignore StatusCake and UptimeRobot IP addresses</li>
+</ul>
+<p><strong>NOTE: .NET Framework 3.5 is now required</strong>.&nbsp; You likely already have it installed if you had 2.0 installed, but it's possible you don't (especially if you're using XP)</p>

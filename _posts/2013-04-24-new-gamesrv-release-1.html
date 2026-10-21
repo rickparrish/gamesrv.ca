@@ -1,0 +1,21 @@
+---
+layout: default
+title: GameSrv alpha release 7
+---
+
+<p>Just uploaded a new release. See the CHANGELOG.txt for the full list of changes, or here's the shortened list:</p>
+<ul>
+	<li>Added ASCII version of all ANSI files</li>
+	<li>Updated DisplayFile* action so you can pass an extensionless name, and GameSrv will pick the best extension based on the user's terminal type</li>
+	<li>Changed things so "Incoming connection from :0" will be less likely to shown in the log window</li>
+	<li>Added config\ignored-ips.txt</li>
+	<li>Added *ALIAS, *USERNAME and *PASSWORD command-line parameters. Also made it possible to pass values from newuser.ini as command-line parameters</li>
+	<li>NOTE: The above parameters could be abused by malicious users -- please read doors\_runbbs.ini before you try using these</li>
+	<li>Added ability to disable password hashing (you can only do this with a fresh install though -- once you have users, it's too late to disable hashing or they won't be able to sign in anymore)</li>
+	<li>Added a NewUserPassword setting to gamesrv.ini, allowing you to run a private system (users must enter this password before they can register)</li>
+	<li>Added initial support for DOSBox 0.73, so DOS doors can run on 64bit versions of Windows (it really doesn't work that well though)</li>
+	<li>Added a filter so incompatible doors won't be listed on the various menus (for example 16bit doors won't be listed on 64bit versions of Windows (unless DOSBox is installed))</li>
+	<li>Renamed GSConfig to GameSrvConfig</li>
+	<li>Added an Upgrade.exe program to import your settings/users from a GameSrv v10.04.02 install</li>
+	<li>Added *MINUTESLEFT and *SECONDSLEFT command-line parameters</li>
+</ul>

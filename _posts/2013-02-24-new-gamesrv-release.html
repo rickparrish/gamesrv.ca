@@ -1,0 +1,13 @@
+---
+layout: default
+title: GameSrv alpha release 6
+---
+
+<p>Just uploaded a new release. Change summary:</p>
+<ul>
+	<li>Fixed CTRL-C in GameSrvGUI -- it'll now just copy the portion of the log window text you had selected, and won't also open the configuration program</li>
+	<li>Changed the way coloured text is added in GameSrvGUI, which will hopefully solve the problem of colours not being used while the program is minimized</li>
+	<li>Implemented terminal type detection. Which reminds me that I need to make .ASC screens for all the .ANS screens, in the off-chance that a non-ANSI capable client connects. Guess this'll wait for the next release now!</li>
+	<li>"Behind the scenes" fix for the way the text is output in GameSrvConsole</li>
+	<li>Upgraded Usurper from v0.21a to 0.23b. Please see the CHANGELOG.txt for notes on upgrading</li>
+</ul>
